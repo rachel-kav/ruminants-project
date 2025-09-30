@@ -8,16 +8,16 @@ load(trees)
 ratio_trees <- list()
 
 gene_list <- names(ds_filtered_trees)
-  
+
 for (gene in gene_list) {
   dn_tree <- dn_filtered_trees[[gene]]
   ds_tree <- ds_filtered_trees[[gene]]
-  
+
   if (!all(dn_tree$edge == ds_tree$edge)) {
     warning(paste("Topology mismatch in", gene))
     next
   }
-    
+
   ds_lengths <- ds_tree$edge.length
   dn_lengths <- dn_tree$edge.length
 
@@ -31,5 +31,4 @@ for (gene in gene_list) {
   ratio_trees[[gene]] <- ratio_tree
 }
 
-save(ratio_trees, file="data/dnds_ratio_trees.Rdata")
-
+save(ratio_trees, file = "data/dnds_ratio_trees.Rdata")
